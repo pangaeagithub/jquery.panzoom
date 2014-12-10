@@ -678,9 +678,9 @@
 				}
 				var clientV = new Vector(clientX, clientY, 1);
 				var surfaceM = new Matrix(matrix);
-				// Supply an offset manually if necessary
-				var o = this.parentOffset || this.$parent.offset();
-				var offsetM = new Matrix(1, 0, o.left - this.$doc.scrollLeft(), 0, 1, o.top - this.$doc.scrollTop());
+				// Commenting out offset to make plugin work for scenarios where parent has translate applied - Supply an offset manually if necessary
+				//var o = this.parentOffset || this.$parent.offset();
+				var offsetM = new Matrix(1, 0, 0, 0, 1, 0); //new Matrix(1, 0, o.left - this.$doc.scrollLeft(), 0, 1, o.top - this.$doc.scrollTop());
 				var surfaceV = surfaceM.inverse().x(offsetM.inverse().x(clientV));
 				var scaleBy = scale / matrix[0];
 				surfaceM = surfaceM.x(new Matrix([ scaleBy, 0, 0, scaleBy, 0, 0 ]));
